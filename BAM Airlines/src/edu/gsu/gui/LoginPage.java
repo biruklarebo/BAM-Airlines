@@ -54,7 +54,7 @@ public class LoginPage extends Application {
 		  Alerts.alert1("Please enter username and/or password");
 	  }
 	  else (
-			 System.out.println("");
+			 System.out.println(""); //CONTINUE FROM HERE
   }
   
   
