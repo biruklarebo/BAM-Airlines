@@ -12,7 +12,7 @@ public class Flight
 	private String flightTime;
 	private int price;
 	private String flightDate;
-	private int seatNumber;
+	private int seatCount;
 	
 	
 	//default no-arg constructor
@@ -23,7 +23,7 @@ public class Flight
 	
 	//creates object "flight"
 	public Flight(int flightNumber, String airlineName, String departureCity, String arrivalCity, String flightTime, int price,
-			String flightDate, int seatNumber) 
+			String flightDate, int seatCount) 
 	{	
 		super(); //if any of these attributes are not used the no-arg constructor will be called
 		this.flightNumber = flightNumber;
@@ -33,7 +33,7 @@ public class Flight
 		this.flightTime = flightTime;
 		this.price = price;
 		this.flightDate = flightDate;
-		this.seatNumber = seatNumber;
+		this.seatCount = seatCount;
 	}
 	public int getFlightNumber() 
 	{
@@ -91,12 +91,12 @@ public class Flight
 	{
 		this.flightDate = flightDate;
 	}
-	public int getSeatNumber() 
+	public int getSeatCount() 
 	{
-		return seatNumber;
+		return seatCount;
 	}
-	public void setSeatNumber(int seatNumber) 
+	public void setSeatCount(int seatCount) 
 	{
-		this.seatNumber = seatNumber;
+		this.seatCount = seatCount;
 	}
 }
