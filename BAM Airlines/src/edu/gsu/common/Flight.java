@@ -1,6 +1,6 @@
 package edu.gsu.common;
 
-//Flight class created
+//Flight class created to be used in our application
 
 public class Flight 
 {	
