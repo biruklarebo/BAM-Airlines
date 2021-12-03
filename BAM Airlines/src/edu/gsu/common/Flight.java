@@ -1,38 +1,48 @@
 package edu.gsu.common;
 
+//Flight class created
+
 public class Flight 
-{
-	private int flightNo;
+{	
+	//Initialization and encapsulation of flight attributes
+	private int flightNumber;
 	private String airlineName;
-	private String startCity;
-	private String endCity;
+	private String departureCity;
+	private String arrivalCity;
 	private String flightTime;
 	private int price;
 	private String flightDate;
-	private int seats;
+	private int seatNumber;
 	
-	public Flight(int flightNo, String airlineName, String startCity, String endCity, String flightTime, int price,
-			String flightDate, int seats) 
+	
+	//default no-arg constructor
+	public Flight()
+	{
+		
+	}
+	
+	//creates object "flight"
+	public Flight(int flightNumber, String airlineName, String departureCity, String arrivalCity, String flightTime, int price,
+			String flightDate, int seatNumber) 
 	{	
-		super();
-		this.flightNo = flightNo;
+		super(); //if any of these attributes are not used the no-arg constructor will be called
+		this.flightNumber = flightNumber;
 		this.airlineName = airlineName;
-		this.startCity = startCity;
-		this.endCity = endCity;
+		this.departureCity = departureCity;
+		this.arrivalCity = arrivalCity;
 		this.flightTime = flightTime;
 		this.price = price;
 		this.flightDate = flightDate;
-		this.seats = seats;
+		this.seatNumber = seatNumber;
 	}
-	public int getFlightNo() 
+	public int getFlightNumber() 
 	{
-		return flightNo;
+		return flightNumber;
 	}
-	public void setFlightNo(int flightNo) 
+	public void setFlightNumber(int flightNumber) 
 	{
-		this.flightNo = flightNo;
+		this.flightNumber = flightNumber;
 	}
-	
 	public String getAirlineName() 
 	{
 		return airlineName;
@@ -41,21 +51,21 @@ public class Flight
 	{
 		this.airlineName = airlineName;
 	}
-	public String getStartCity() 
+	public String getDepartureCity() 
 	{
-		return startCity;
+		return departureCity;
 	}
-	public void setStartCity(String startCity) 
+	public void setDepartureCity(String departureCity) 
 	{
-		this.startCity = startCity;
+		this.departureCity = departureCity;
 	}
-	public String getEndCity() 
+	public String getArrivalCity() 
 	{
-		return endCity;
+		return arrivalCity;
 	}
-	public void setEndCity(String endCity) 
+	public void setArrivalCity(String arrivalCity) 
 	{
-		this.endCity = endCity;
+		this.arrivalCity = arrivalCity;
 	}
 	public String getFlightTime() 
 	{
@@ -81,12 +91,12 @@ public class Flight
 	{
 		this.flightDate = flightDate;
 	}
-	public int getSeats() 
+	public int getSeatNumber() 
 	{
-		return seats;
+		return seatNumber;
 	}
-	public void setSeats(int seats) 
+	public void setSeatNumber(int seatNumber) 
 	{
-		this.seats = seats;
+		this.seatNumber = seatNumber;
 	}
 }
