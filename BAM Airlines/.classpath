@@ -16,7 +16,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/blare/OneDrive - Georgia State University/SQL and JAVAFX setup stuff/mysql-connector-java-8.0.18.jar">
+	<classpathentry kind="lib" path="/Users/matthewlee/Desktop/mysql-connector-java-8.0.18/mysql-connector-java-8.0.18.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
