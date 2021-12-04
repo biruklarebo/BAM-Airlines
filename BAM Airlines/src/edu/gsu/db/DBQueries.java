@@ -18,8 +18,8 @@ public class DBQueries {
 		
 		try {
 			connection = DriverManager.getConnection
-					      ("jdbc:mysql://localhost/test","root","password");
-					       // ("jdbc:mysql://104.196.113.68/test","root","password");
+					      ("jdbc:mysql://127.0.0.1:3306/bamdb","root","Ariacis3270");
+					       // ("jdbc:mysql://127.0.0.1:3306/bamdb","root","Ariacis3270");
 					
 			System.out.println("Database connected");
 
@@ -59,7 +59,7 @@ public class DBQueries {
 	public static void getFlights(Customer co) throws Exception {
 		
 		// can I run a query on reservation table that select all teh rows with customerID comes from co
-		
+		/*
 		Flight f1 = new Flight();
 		f1.setAirlineName("Delta 303");
 		
@@ -72,14 +72,14 @@ public class DBQueries {
 		co.getFlights().add(f1);
 		co.getFlights().add(f2);
 		co.getFlights().add(f3);
-		
+		*/
 	}
 	
 	public static void main(String[] args) throws Exception {
-		
+		/*
 		Customer c0 = new Customer();
 		login(c0);
-		
+	*/	
 		
 	}
 }
