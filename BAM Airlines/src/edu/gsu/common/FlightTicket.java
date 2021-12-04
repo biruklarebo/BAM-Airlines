@@ -1,6 +1,6 @@
 package edu.gsu.common;
 
-public class FlightTicket 
+public class FlightTicket extends Flight
 {
 	//initialized the attributes
 	private int ticketNumber;

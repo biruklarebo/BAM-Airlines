@@ -15,7 +15,7 @@ public class Customer
 	private String email;
 	private String SSN;
 	private String customerSecurityQuestion;
-	private String customerSecurityQuestionAnswer;
+	private String customerSecurityAnswer;
 	private ArrayList<Flight> flights;
 	private String action;
 	
@@ -111,13 +111,13 @@ public class Customer
 	{
 		this.customerSecurityQuestion = customerSecurityQuestion;
 	}
-	public String getCustomerSecurityQuestionAnswer() 
+	public String getCustomerSecurityAnswer() 
 	{
-		return customerSecurityQuestionAnswer;
+		return customerSecurityAnswer;
 	}
-	public void setCustomerSecurityQuestionAnswer(String customerSecurityQuestionAnswer) 
+	public void setCustomerSecurityAnswer(String customerSecurityAnswer) 
 	{
-		this.customerSecurityQuestionAnswer = customerSecurityQuestionAnswer;
+		this.customerSecurityAnswer = customerSecurityAnswer;
 	}
 	public ArrayList<Flight> getFlights() 
 	{
