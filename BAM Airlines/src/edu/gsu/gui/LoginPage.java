@@ -28,7 +28,7 @@ import javafx.scene.input.*;
 
 
 
-public class LoginPage extends Application {
+public class LoginPage {
 
   @FXML
   private TextField username;
