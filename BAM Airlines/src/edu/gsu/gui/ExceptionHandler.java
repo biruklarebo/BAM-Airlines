@@ -11,28 +11,21 @@ public class ExceptionHandler {
 	public static boolean process(VO vo) {
 		
 		try {
-			Customer co = vo.getCustomer();
-			BizLogicProcess.process(co);
+			BizLogicProcess.process(vo);
 			
 		} catch (Exception ex) {
 			
+			
 			  Alert alert = new Alert(AlertType.ERROR);
-			  //alert.setTitle("Login Dialog");
+			  alert.setTitle("Error");
 			  //alert.setHeaderText("Look, an Information Dialog");
 			  alert.setContentText(ex.getMessage());
-			  
-			  
 			  alert.getDialogPane().setStyle("-fx-font-family: 'serif'");
              
 
 			  alert.showAndWait();
 			  return false;
 		}
-		
 		return true;
-		
-		
-		
 	}
-	
 }
