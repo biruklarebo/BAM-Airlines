@@ -5,25 +5,26 @@ import edu.gsu.common.Customer;
 import edu.gsu.common.VO;
 import edu.gsu.db.DBQueries;
 
-public class BizLogicProcess {
-	public static void process(VO vo) throws Exception {
+public class BizLogicProcess 
+{
+	public static void process(VO vo) throws Exception 
+	{
 		Customer co = vo.getCustomer();	
-		switch (co.getAction()) {
+		switch (co.getAction()) 
+		{
 			case Action.LOGIN:
 				DBQueries.login(vo);
 				break;
 			case Action.GET_FLIGHTS:
-				DBQueries.getFlights(co);
+				DBQueries.getFlights(vo);
 				break;
-			case Action.createAccount(co);
+			case Action.CREATE_ACCOUNT:;
 				DBQueries.createAccount(vo);
 				break;
-		}
-		*/
-	
-		//search flight
-		//delete 
-		//	
-	// }
-	
+		}	
+	}
+		// search flights
+		// delete flights 
+		// add flights
 }
+	
