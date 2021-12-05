@@ -17,6 +17,7 @@ public class Customer
 	private String customerSecurityQuestion;
 	private String customerSecurityAnswer;
 	private ArrayList<Flight> flights;
+	private Flight deletedFlight; // would make it so that a flight is deleted add business logic so that it deletes flight
 	private String action;
 	
 	public Customer() 
@@ -135,4 +136,7 @@ public class Customer
 	{
 		this.action = action;
 	}
+	// we should decide if we want to follow what prof did with Action or take it our own way... 
+	
+	
 }

@@ -2,12 +2,12 @@ package edu.gsu.bizlogic;
 
 import edu.gsu.common.Action;
 import edu.gsu.common.Customer;
+import edu.gsu.common.VO;
 import edu.gsu.db.DBQueries;
 
 public class BizLogicProcess {
-	
-	public static void process(Customer co) throws Exception {
-		
+	public static void process(VO vo) throws Exception {
+		Customer co = vo.getCustomer();
 		switch (co.getAction()) {
 		
 			case Action.LOGIN:
@@ -19,6 +19,11 @@ public class BizLogicProcess {
 				break;
 		    
 		}
-	}
-
+		*/
+	
+		//search flight
+		//delete 
+		//	
+	// }
+	
 }
