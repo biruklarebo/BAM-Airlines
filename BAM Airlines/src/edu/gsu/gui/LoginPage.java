@@ -60,7 +60,7 @@ public class LoginPage extends Application{
 			System.out.println("Login Success");
 	  }
 	  
-	  //NOW WE NEED TO CREATE A WAY TO CHECK TO SEE IF USER EXISTS IN DATABASE 
+	  //NOW WE NEED TO CREATE A WAY TO CHECK TO SEE IF USER EXISTS  
 	  VO vo = new VO();
 	  vo.setCustomer(co);
 	  
