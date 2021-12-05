@@ -21,6 +21,8 @@ public class BizLogicProcess
 			case Action.CREATE_ACCOUNT:;
 				DBQueries.createAccount(vo);
 				break;
+			case Action.FORGOT_PASSWORD:;
+				DBQueries.forgotPassword(vo);
 		}	
 	}
 		// search flights

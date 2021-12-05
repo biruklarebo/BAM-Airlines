@@ -51,7 +51,7 @@ public class DBQueries {
 		}
 	}
 	  	
-	public static void createAccount(VO vo) throws Exception {
+	/*public static void createAccount(VO vo) throws Exception {
 		Customer co = vo.getCustomer();	
 
 		String SQLquery = " insert into user (customerID, firstName, lastName, address, zip, state, userName, password, email, ssn, customerSecurityQuestion, customerSecurityAnswer)"
@@ -77,6 +77,34 @@ public class DBQueries {
 		con.close();
 		
 	}
+	*/
+	public static void createAccount(VO vo) throws Exception {
+		Customer co = vo.getCustomer();	
+
+		String SQLquery = " insert into user (firstName, lastName, address, zip, state, userName, password, email, ssn, customerSecurityQuestion, customerSecurityAnswer)"
+		        + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		Connection con = ConnectDatbase.getConnection();
+		PreparedStatement smt = con.prepareStatement(SQLquery);
+		smt.setString(1, co.getFirstName());
+		smt.setString(2, co.getLastName());
+		smt.setString(3, co.getAddress());
+		smt.setInt(4, co.getZip());
+		smt.setString(5, co.getState());
+		smt.setString(6, co.getUserName());
+		smt.setString(7, co.getPassword());
+		smt.setString(8, co.getEmail());
+		smt.setString(9, co.getSSN());;
+		smt.setString(10, co.getCustomerSecurityQuestion());
+		smt.setString(11, co.getCustomerSecurityAnswer());
+		
+		
+		smt.execute();
+		con.close();
+		
+	}
+	
+	//add forgot password queries here!
 	
 	public static void getFlights(VO vo) throws Exception {
 		Customer co = vo.getCustomer();
