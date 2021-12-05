@@ -24,6 +24,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.*;
+import javafx.fxml.FXMLLoader;
 
 
 
@@ -48,15 +49,14 @@ public class LoginPage {
   @FXML
   public void loginClicked(MouseEvent event) throws IOException {
 	  Customer c = new Customer();
-	  if (username.getText().isEmpty() && password.getText().isEmpty() 
-			  || username.getText().isEmpty()
-			  || username.getText().isEmpty()) {
-		  Alerts.alert1("Please enter username and/or password");
+	  if ( username.getText().isEmpty()|| password.getText().isEmpty()) {
+		  AlertBox.display("Error","Please enter username and/or password");
 	  }
-	  else (
+	  else {
 			 System.out.println(""); //CONTINUE FROM HERE
+	  }
   }
-  
+
   
   
   
@@ -94,15 +94,9 @@ public class LoginPage {
     primaryStage.show(); // Display the stage
   }
 
-  /**
-   * The main method is only needed for the IDE with limited
-   * JavaFX support. Not needed for running from the command line.
-   */
+ 
   public static void main(String[] args) {
-	  
-
-    launch(args);
-    
+    launch(args);  
   }
   
   public void signup(String userName, String password)  {
@@ -115,38 +109,11 @@ public class LoginPage {
 	  
 	  System.out.println("Customer:" + userName + " " + password);
 	  
-	  boolean success = ExceptionHandler.process(customer);
 	  
-	  if (success) {
-		  System.out.println("Successful Login!");
-		  
-		  customer.setAction(Action.GET_FLIGHTS);
-		  
-		  success = ExceptionHandler.process(customer);
-		  
-		  if (success) {
-	  
-			  Stage stage = (Stage) logIn.getScene().getWindow();
-			  
-	  
-			  stage.close();
-		  
-			  AccountPage acc = new AccountPage(customer);
-			  
-			  try {
-				  
-				  acc.start(new Stage());
-				  
-				  
-			  } catch (Exception e) {
-				  // TODO Auto-generated catch block
-				  e.printStackTrace();
-			  } 
 		  }
-	  }
+}
 	  
-  }
-} 
+  
 
 
 
