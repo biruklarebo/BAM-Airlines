@@ -9,11 +9,14 @@ public class ConnectDatbase {
 			// TODO Auto-generated method stub
 			getConnection();
 		}
-
+		
+		// REPLACE IP BASED ON WHAT WIFI YOU ARE ON 
+		//  gsu IP 10.250.22.166
+		// regular IP 10.0.0.103
 		public static Connection getConnection() throws Exception {
 			try {
 				String driver = "com.mysql.cj.jdbc.Driver";
-				String url = "jdbc:mysql://10.0.0.103:3306/bamdb";
+				String url = "jdbc:mysql://10.250.22.166:3306/bamdb";
 				String username = "root";
 				String password = "Java123*";
 				Class.forName(driver);
