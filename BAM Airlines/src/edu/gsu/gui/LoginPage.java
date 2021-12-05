@@ -11,6 +11,7 @@ import edu.gsu.common.Action;
 import edu.gsu.common.Customer;
 import javafx.application.Application;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
@@ -29,7 +30,7 @@ import javafx.fxml.FXMLLoader;
 
 
 
-public class LoginPage {
+public class LoginPage extends Application {
 
   @FXML
   private TextField username;
@@ -48,13 +49,20 @@ public class LoginPage {
   
   @FXML
   public void loginClicked(MouseEvent event) throws IOException {
-	  Customer c = new Customer();
+	  Customer co = new Customer();
 	  if ( username.getText().isEmpty()|| password.getText().isEmpty()) {
 		  AlertBox.display("Error","Please enter username and/or password");
+		  
 	  }
 	  else {
-			 System.out.println(""); //CONTINUE FROM HERE
+			co.setUserName(username.getText());
+			co.setPassword(password.getText());
+			System.out.println("Login Success");
 	  }
+	  
+	
+	  
+	  
   }
 
   
@@ -68,30 +76,20 @@ public class LoginPage {
   
   
   @Override // Override the start method in the Application class
-  public void start(Stage primaryStage) {
-    // Create a pane and set its properties
-    HBox pane = new HBox(10);
-    pane.setAlignment(Pos.CENTER);
-    //Button loginButton = new Button("Login");
-    TextField userName = new TextField("UserName");
-    TextField password = new TextField("Password");
-
-    
-    loginButton.setOnAction(e -> login(userName.getText(), password.getText()));
-    
-    
-    pane.getChildren().addAll(userName, password, logIn);
-    
-    // Create a scene and place it in the stage
-    Scene scene = new Scene(pane, 500, 100);
-	//scene.getRoot().setStyle("-fx-font-family: 'serif'");
-	
-	scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-    
-    
-    primaryStage.setTitle("HandleEvent"); // Set the stage title
-    primaryStage.setScene(scene); // Place the scene in the stage
-    primaryStage.show(); // Display the stage
+  public void start(Stage primaryStage)  {
+   
+	  try {
+		  Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+		  Scene scene = new Scene(root);
+		  
+		  
+		  primaryStage.setTitle("Welcome to BAM Airlines");
+		  primaryStage.setScene(scene);
+		  primaryStage.show();
+		  
+	  }catch (Exception e) {
+		  e.printStackTrace();
+	  }
   }
 
  
@@ -99,18 +97,7 @@ public class LoginPage {
     launch(args);  
   }
   
-  public void signup(String userName, String password)  {
-	  
-	  Customer customer = new Customer();
-	  
-	  customer.setUserName(userName);
-	  customer.setPassword(password);
-	  customer.setAction(Action.LOGIN);
-	  
-	  System.out.println("Customer:" + userName + " " + password);
-	  
-	  
-		  }
+  
 }
 	  
   

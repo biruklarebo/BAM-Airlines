@@ -42,7 +42,7 @@
             </Label>
             <TextField fx:id="userName" layoutX="148.0" layoutY="175.0" promptText="Username" />
             <PasswordField fx:id="password" layoutX="148.0" layoutY="211.0" promptText="Password" />
-            <Button fx:id="loginButton" layoutX="122.0" layoutY="266.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="56.0" text="Login" />
+            <Button layoutX="122.0" layoutY="266.0" mnemonicParsing="false" onAction="#loginClicked" prefHeight="27.0" prefWidth="56.0" text="Login" />
             <Button fx:id="signup" layoutX="198.0" layoutY="267.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="65.0" text="Register" />
          </children>
       </AnchorPane>
