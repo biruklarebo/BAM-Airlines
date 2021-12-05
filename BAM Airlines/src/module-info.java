@@ -5,7 +5,5 @@ module BAM {
 	requires javafx.graphics;
 	
 	opens edu.gsu.gui to javafx.graphics, javafx.fxml;
-	//lol
-	//ok
-	//hey biruk
+	
 }
