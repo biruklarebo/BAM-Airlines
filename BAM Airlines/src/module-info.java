@@ -6,4 +6,5 @@ module BAM {
 	
 	opens edu.gsu.gui to javafx.graphics, javafx.fxml;
 	//lol
+	//ok
 }
