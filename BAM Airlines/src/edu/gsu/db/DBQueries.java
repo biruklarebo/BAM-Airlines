@@ -22,9 +22,9 @@ public class DBQueries {
 			// Create a statement
 			PreparedStatement statement = con.prepareStatement(Queries.LOGIN);
 	    
-			statement.setString(1, co.getUserName());
-			statement.setString(2, co.getPassword());
-				    
+			String user = co.getUserName();
+			String pass = co.getPassword();
+			
 			// Execute a statement
 			ResultSet resultSet = statement.executeQuery();
 			
@@ -32,13 +32,16 @@ public class DBQueries {
 
 			// Iterate through the result and print the student names
 			while (resultSet.next()) {
-				System.out.println("Number of Users:" + resultSet.getInt(1));
-				count = resultSet.getInt(1);
+				String username = resultSet.getString("userName");
+				String password = resultSet.getString("password");
+				if((username.equals(user) && (password.equals(pass)))){
+					count = 1;
+					System.out.println("Login matches");
+				}
 			}
 			
 			if (count == 0)
-				throw new DistinctException("Invalid UserName or Password!");
-				     
+				throw new DistinctException("Invalid UserName or Password!");	     
 	    
 		} catch (SQLException e) {
 				// TODO Auto-generated catch block

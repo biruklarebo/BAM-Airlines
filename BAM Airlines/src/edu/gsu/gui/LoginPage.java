@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import edu.gsu.common.Action;
 import edu.gsu.common.Customer;
+import edu.gsu.common.VO;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -53,11 +54,16 @@ public class LoginPage extends Application {
 		  
 	  }
 	  else {
-			co.setUserName(username.getText());
-			co.setPassword(password.getText());
-			System.out.println("Login Success");
+		  VO vo = new VO();
+		  vo.setCustomer(co);
+		  co.setUserName(username.getText());
+		  co.setPassword(password.getText());
+		  	 ExceptionHandler.process(vo, "LOGIN");
 	  }
-	  
+  }
+	  public void registerClicked(MouseEvent event) throws IOException {
+		  System.out.print("register clicked!");
+		 
 	
 	  
 	  

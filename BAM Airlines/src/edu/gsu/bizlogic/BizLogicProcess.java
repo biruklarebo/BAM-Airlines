@@ -28,7 +28,11 @@ public class BizLogicProcess
 		
 		if (message == "CREATE_ACCOUNT") {
 			DBQueries.createAccount(vo);
-			System.out.println("checkpoint");
+			System.out.println("create accountcheckpoint");
+		}
+		if (message == "LOGIN") {
+			DBQueries.login(vo);
+			System.out.println("login checkpoint");
 		}
 	}
 		// search flights
