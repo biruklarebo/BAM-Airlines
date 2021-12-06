@@ -142,7 +142,7 @@ private String[] stateOptions = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE",
 				  VO vo = new VO();
 				  vo.setCustomer(co);
 				
-				  ExceptionHandler.process(vo, "Create Account");
+				  ExceptionHandler.process(vo, "CREATE_ACCOUNT");
 				  
 				  
 				  

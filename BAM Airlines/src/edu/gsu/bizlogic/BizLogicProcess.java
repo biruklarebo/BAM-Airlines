@@ -26,7 +26,7 @@ public class BizLogicProcess
 		}
 		*/
 		
-		if (message == "Create Account") {
+		if (message == "CREATE_ACCOUNT") {
 			DBQueries.createAccount(vo);
 			System.out.println("checkpoint");
 		}
