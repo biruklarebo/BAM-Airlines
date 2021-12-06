@@ -2,13 +2,13 @@ package edu.gsu.gui;
 
 import java.util.HashMap;
 
-
 import java.util.HashSet;
 
 import java.io.IOException;
+
+
 import edu.gsu.common.Action;
 import edu.gsu.common.Customer;
-import edu.gsu.common.VO;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -26,13 +26,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.*;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.input.MouseEvent;
-import edu.gsu.common.Action;
-
-import edu.gsu.gui.RegisterPage;
 
 
-public class LoginPage extends Application{
+
+
+public class LoginPage extends Application {
 
   @FXML
   private TextField username;
@@ -40,7 +38,7 @@ public class LoginPage extends Application{
   private TextField password;
   @FXML
   private Button logIn;
-  @FXML
+  @FXML 
   private Button register;
   @FXML
   private Button forgotPassword;
@@ -50,7 +48,7 @@ public class LoginPage extends Application{
   @FXML
   public void loginClicked(MouseEvent event) throws IOException {
 	  Customer co = new Customer();
-	  if (username.getText().isEmpty()|| password.getText().isEmpty()) {
+	  if ( username.getText().isEmpty()|| password.getText().isEmpty()) {
 		  AlertBox.display("Error","Please enter username and/or password");
 		  
 	  }
@@ -60,25 +58,16 @@ public class LoginPage extends Application{
 			System.out.println("Login Success");
 	  }
 	  
-	  
-	  VO vo = new VO();
-	  vo.setCustomer(co);
-	  
-	  
 	
-
-  }
-  
-
-  @FXML
-  public void registerClicked(MouseEvent event) throws IOException{
-	    
+	  
 	  
   }
+
   
   
   
-  //for the push
+  
+  
   
   
   
