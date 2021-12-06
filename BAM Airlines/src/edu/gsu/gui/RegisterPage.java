@@ -104,7 +104,8 @@ private String[] stateOptions = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE",
 	}
 	public void initialize1(URL arg0, ResourceBundle arg1) {
 		stateChoiceBox.getItems().addAll(stateOptions);
-		System.out.println("State");
+		System.out.println("New state");
+		
 	}
 	
 	public static void main(String[] args) {
