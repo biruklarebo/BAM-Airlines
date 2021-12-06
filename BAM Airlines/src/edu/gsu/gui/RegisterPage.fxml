@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gsu.gui.RegisterPage">
    <center>
       <AnchorPane prefHeight="404.0" prefWidth="593.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
          <children>
@@ -18,8 +20,7 @@
             </Label>
             <Line endX="65.0" layoutX="141.0" layoutY="26.0" startX="-131.0" stroke="WHITE" />
             <Line endX="125.0" layoutX="447.0" layoutY="27.0" startX="-115.0" stroke="WHITE" />
-            <Label layoutX="38.0" layoutY="327.0" text="User Name :" textFill="WHITE" />
-            <TextField layoutX="38.0" layoutY="353.0" prefHeight="1.0" prefWidth="524.0" />
+            <Label layoutX="22.0" layoutY="194.0" text="User Name :" textFill="WHITE" />
             <Label layoutX="20.0" layoutY="47.0" text="First Name :" textFill="WHITE" />
             <TextField layoutX="20.0" layoutY="64.0" prefHeight="25.0" prefWidth="172.0" />
             <Label layoutX="231.0" layoutY="47.0" text="Last Name :" textFill="WHITE" />
@@ -30,8 +31,19 @@
             <Label layoutX="360.0" layoutY="146.0" text="State :" textFill="WHITE" />
             <Label layoutX="461.0" layoutY="146.0" text="Zip Code :" textFill="WHITE" />
             <TextField layoutX="20.0" layoutY="163.0" prefHeight="25.0" prefWidth="305.0" />
-            <TextField layoutX="360.0" layoutY="163.0" prefHeight="25.0" prefWidth="63.0" />
             <TextField layoutX="461.0" layoutY="163.0" prefHeight="25.0" prefWidth="80.0" />
+            <TextField layoutX="20.0" layoutY="211.0" prefHeight="25.0" prefWidth="526.0" />
+            <Label layoutX="23.0" layoutY="242.0" text="Password :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <PasswordField layoutX="20.0" layoutY="266.0" prefHeight="25.0" prefWidth="199.0" />
+            <PasswordField layoutX="283.0" layoutY="266.0" prefHeight="25.0" prefWidth="218.0" />
+            <Label layoutX="279.0" layoutY="242.0" text="Confirm Password :" textFill="WHITE" />
+            <ChoiceBox fx:id="myChoiceBox" layoutX="348.0" layoutY="333.0" prefWidth="150.0" />
+            <Label fx:id="sqLabel" layoutX="343.0" layoutY="308.0" text="Select your security question :" textFill="WHITE" />
+            <ChoiceBox fx:id="stateChoiceBox" layoutX="355.0" layoutY="163.0" prefHeight="25.0" prefWidth="46.0" />
          </children>
       </AnchorPane>
    </center>

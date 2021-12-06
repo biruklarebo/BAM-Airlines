@@ -2,11 +2,10 @@ package edu.gsu.gui;
 
 import java.util.HashMap;
 
+
 import java.util.HashSet;
 
 import java.io.IOException;
-
-
 import edu.gsu.common.Action;
 import edu.gsu.common.Customer;
 import edu.gsu.common.VO;
@@ -29,6 +28,8 @@ import javafx.scene.input.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import edu.gsu.common.Action;
+
+import edu.gsu.gui.RegisterPage;
 
 
 public class LoginPage extends Application{
@@ -71,6 +72,7 @@ public class LoginPage extends Application{
 
   @FXML
   public void registerClicked(MouseEvent event) throws IOException{
+	    
 	  
   }
   
