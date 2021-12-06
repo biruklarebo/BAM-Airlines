@@ -133,6 +133,7 @@ private String[] stateOptions = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE",
 				  co.setCustomerSecurityQuestion(myChoiceBox.getValue());
 				  co.setCustomerSecurityAnswer(securityQuesitonAnswer.getText());
 				  co.setSSN(ssn.getText());
+				  //
 				  
 				  
 				  
