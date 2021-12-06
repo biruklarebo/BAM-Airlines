@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import edu.gsu.common.Customer;
 import edu.gsu.common.Flight;
 import edu.gsu.common.VO;
-import edu.gsu.excpetions.LoginException;
+import edu.gsu.excpetions.DistinctException;
 import edu.gsu.db.ConnectDatbase;
 public class DBQueries {
 	
@@ -37,7 +37,7 @@ public class DBQueries {
 			}
 			
 			if (count == 0)
-				throw new LoginException("Invalid UserName or Password!");
+				throw new DistinctException("Invalid UserName or Password!");
 				     
 	    
 		} catch (SQLException e) {
@@ -51,41 +51,11 @@ public class DBQueries {
 		}
 	}
 	  	
-	/*public static void createAccount(VO vo) throws Exception {
+		public static void createAccount(VO vo) throws Exception {
 		Customer co = vo.getCustomer();	
 
-		String SQLquery = " insert into user (customerID, firstName, lastName, address, zip, state, userName, password, email, ssn, customerSecurityQuestion, customerSecurityAnswer)"
-		        + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
 		Connection con = ConnectDatbase.getConnection();
-		PreparedStatement smt = con.prepareStatement(SQLquery);
-		smt.setInt(1, co.getCustomerID());
-		smt.setString(2, co.getFirstName());
-		smt.setString(3, co.getLastName());
-		smt.setString(4, co.getAddress());
-		smt.setInt(5, co.getZip());
-		smt.setString(6, co.getState());
-		smt.setString(7, co.getUserName());
-		smt.setString(8, co.getPassword());
-		smt.setString(9, co.getEmail());
-		smt.setString(10, co.getSSN());;
-		smt.setString(11, co.getCustomerSecurityQuestion());
-		smt.setString(12, co.getCustomerSecurityAnswer());
-		
-		
-		smt.execute();
-		con.close();
-		
-	}
-	*/
-	public static void createAccount(VO vo) throws Exception {
-		Customer co = vo.getCustomer();	
-
-		String SQLquery = " insert into user (firstName, lastName, address, zip, state, userName, password, email, ssn, customerSecurityQuestion, customerSecurityAnswer)"
-		        + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
-		Connection con = ConnectDatbase.getConnection();
-		PreparedStatement smt = con.prepareStatement(SQLquery);
+		PreparedStatement smt = con.prepareStatement(Queries.CREATE_ACCOUNT);
 		smt.setString(1, co.getFirstName());
 		smt.setString(2, co.getLastName());
 		smt.setString(3, co.getAddress());
