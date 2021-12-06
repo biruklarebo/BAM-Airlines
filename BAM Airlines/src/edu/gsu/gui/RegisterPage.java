@@ -65,7 +65,8 @@ public class RegisterPage extends Application implements Initializable{
 	private ChoiceBox<String> stateChoiceBox;
 	@FXML 
 	private TextField securityQuesitonAnswer;
-	
+	@FXML 
+	private Button submit;
 
 	@Override
 	public void start(Stage secondStage) throws Exception {
