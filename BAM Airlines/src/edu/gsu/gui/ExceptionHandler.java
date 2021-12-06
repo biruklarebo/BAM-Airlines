@@ -8,10 +8,11 @@ import javafx.scene.control.Alert.AlertType;
 
 public class ExceptionHandler {
 
-	public static boolean process(VO vo) {
+	public static boolean process(VO vo, String message) {
 		
 		try {
-			BizLogicProcess.process(vo);
+		
+			BizLogicProcess.process(vo, message);
 			
 		} catch (Exception ex) {
 			

@@ -7,10 +7,10 @@ import edu.gsu.db.DBQueries;
 
 public class BizLogicProcess 
 {
-	public static void process(VO vo) throws Exception 
+	public static void process(VO vo, String message) throws Exception 
 	{
 		Customer co = vo.getCustomer();	
-		switch (co.getAction()) 
+/*		switch (co.getAction()) 
 		{
 			case Action.LOGIN:
 				DBQueries.login(vo);
@@ -23,7 +23,13 @@ public class BizLogicProcess
 				break;
 			// case Action.FORGOT_PASSWORD:;
 				// DBQueries.forgotPassword(vo);
-		}	
+		}
+		*/
+		
+		if (message == "Create Account") {
+			DBQueries.createAccount(vo);
+			System.out.println("checkpoint");
+		}
 	}
 		// search flights
 		// delete flights 

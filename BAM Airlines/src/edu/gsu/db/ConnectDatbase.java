@@ -1,6 +1,7 @@
 package edu.gsu.db;
 
 import java.util.ArrayList;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 

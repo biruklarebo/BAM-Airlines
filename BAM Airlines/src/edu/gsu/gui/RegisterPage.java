@@ -56,13 +56,16 @@ public class RegisterPage extends Application implements Initializable{
 	@FXML
 	private TextField password;
 	@FXML
-	private TextField confirmPassword;
+	private TextField ssn;
 	@FXML 
 	private ChoiceBox<String> myChoiceBox;
 	@FXML
 	private Label sqLabel;
 	@FXML
 	private ChoiceBox<String> stateChoiceBox;
+	@FXML 
+	private TextField securityQuesitonAnswer;
+	
 
 	@Override
 	public void start(Stage secondStage) throws Exception {
@@ -104,9 +107,55 @@ private String[] stateOptions = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE",
 	}
 	public void initialize1(URL arg0, ResourceBundle arg1) {
 		stateChoiceBox.getItems().addAll(stateOptions);
-		System.out.println("Eh");
 		
 		
+		
+	}
+	
+	public void submitClicked(MouseEvent event) throws IOException {
+		  if (userName.getText().isEmpty()|| password.getText().isEmpty() || email.getText().isEmpty() || address.getText().isEmpty() 
+				  || zip.getText().isEmpty() || userName.getText().isEmpty() || password.getText().isEmpty() || ssn.getText().isEmpty() || 
+				  securityQuesitonAnswer.getText().isEmpty()) {
+			  AlertBox.display("Error","All fields must be filled out.");
+		  }
+		  else {
+			  try {
+				  Customer co = new Customer();
+				  
+				  co.setFirstName(firstName.getText());
+				  co.setLastName(lastName.getText());
+				  co.setAddress(address.getText());
+				  co.setZip(Integer.parseInt(zip.getText()));
+				  co.setState(stateChoiceBox.getValue());
+				  co.setUserName(userName.getText());
+				  co.setPassword(password.getText());
+				  co.setEmail(email.getText());
+				  co.setCustomerSecurityQuestion(myChoiceBox.getValue());
+				  co.setCustomerSecurityAnswer(securityQuesitonAnswer.getText());
+				  co.setSSN(ssn.getText());
+				  
+				  
+				  
+				  
+				  VO vo = new VO();
+				  vo.setCustomer(co);
+				
+				  ExceptionHandler.process(vo, "Create Account");
+				  
+				  
+				  
+			  } catch(Exception e ){
+				  AlertBox.display("Error",e.getMessage());
+				  System.out.println(e);
+			  }
+			  
+			  
+		  }
+		  
+		  
+		 
+		  
+		  
 	}
 	
 	public static void main(String[] args) {

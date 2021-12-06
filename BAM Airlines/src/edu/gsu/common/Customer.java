@@ -15,13 +15,13 @@ public class Customer
 	private String SSN;
 	private String customerSecurityQuestion;
 	private String customerSecurityAnswer;
-	private ArrayList<Flight> flights;
-	private Flight deletedFlight; // would make it so that a flight is deleted add business logic so that it deletes flight
-	private String action;
+//	private ArrayList<Flight> flights;
+//	private Flight deletedFlight; // would make it so that a flight is deleted add business logic so that it deletes flight
+	
 	//
 	public Customer() 
 	{	
-		flights = new ArrayList<>();
+//		flights = new ArrayList<>();
 	}
 	public String getFirstName() 
 	{
@@ -111,21 +111,21 @@ public class Customer
 	{
 		this.customerSecurityAnswer = customerSecurityAnswer;
 	}
-	public ArrayList<Flight> getFlights() 
+//	public ArrayList<Flight> getFlights() 
 	{
-		return flights;
+//		return flights;
 	}
-	public void setFlights(ArrayList<Flight> flights) 
+//	public void setFlights(ArrayList<Flight> flights) 
 	{
-		this.flights = flights;
+//		this.flights = flights;
 	}
-	public String getAction() 
+//	public String getAction() 
 	{
-		return action;
+//		return action;
 	}
-	public void setAction(String action) 
+//	public void setAction(String action) 
 	{
-		this.action = action;
+//		this.action = action;
 	}
 	// we should decide if we want to follow what prof did with Action or take it our own way... 
 	

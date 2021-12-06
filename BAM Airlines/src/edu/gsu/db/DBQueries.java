@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.*;
 
 import edu.gsu.common.Customer;
 import edu.gsu.common.Flight;
@@ -13,6 +14,31 @@ import edu.gsu.common.VO;
 import edu.gsu.excpetions.DistinctException;
 import edu.gsu.db.ConnectDatbase;
 public class DBQueries {
+	
+	
+	private static Connection con;
+	public static Connection ConnectToDB() throws ClassNotFoundException, SQLException {
+		
+		
+		
+			String driver = "com.mysql.cj.jdbc.Driver";
+			String url = "jdbc:mysql://10.250.22.166:3306/bamdb";
+			String username = "root";
+			String password = "Java123*";
+			Class.forName(driver);
+			
+			Connection conn = DriverManager.getConnection(url, username, password);
+			System.out.println("Connceted");
+			return conn;
+			
+
+}
+	
+	public DBQueries() throws ClassNotFoundException, SQLException {
+		DBQueries.ConnectToDB();
+		
+	}
+	
 	
 	public static void login(VO vo) throws Exception {
 		Customer co = vo.getCustomer();	
@@ -53,8 +79,9 @@ public class DBQueries {
 	  	
 		public static void createAccount(VO vo) throws Exception {
 		Customer co = vo.getCustomer();	
+		
 
-		Connection con = ConnectDatbase.getConnection();
+	//	Connection con = ConnectDatbase.getConnection();
 		PreparedStatement smt = con.prepareStatement(Queries.CREATE_ACCOUNT);
 		smt.setString(1, co.getFirstName());
 		smt.setString(2, co.getLastName());
@@ -100,6 +127,7 @@ public class DBQueries {
 		Customer c0 = new Customer();
 		login(c0);
 	*/	
+		
 		
 	}
 }
