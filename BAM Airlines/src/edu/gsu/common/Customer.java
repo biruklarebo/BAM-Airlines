@@ -18,7 +18,7 @@ public class Customer
 	private ArrayList<Flight> flights;
 	private Flight deletedFlight; // would make it so that a flight is deleted add business logic so that it deletes flight
 	private String action;
-	
+	//
 	public Customer() 
 	{	
 		flights = new ArrayList<>();

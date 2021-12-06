@@ -28,8 +28,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.input.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
-
-
+import edu.gsu.common.Action;
 
 
 public class LoginPage extends Application{
@@ -60,11 +59,15 @@ public class LoginPage extends Application{
 			System.out.println("Login Success");
 	  }
 	  
-	  //NOW WE NEED TO CREATE A WAY TO CHECK TO SEE IF USER EXISTS  
+	  
 	  VO vo = new VO();
 	  vo.setCustomer(co);
 	  
-	}
+	  
+	
+
+  }
+  
 
   @FXML
   public void registerClicked(MouseEvent event) throws IOException{
