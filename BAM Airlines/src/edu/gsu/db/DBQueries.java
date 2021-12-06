@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import edu.gsu.common.Customer;
 import edu.gsu.common.Flight;
 import edu.gsu.common.VO;
-import edu.gsu.excpetions.LoginException;
+import edu.gsu.excpetions.DistinctException;
 import edu.gsu.db.ConnectDatbase;
 public class DBQueries {
 	
@@ -37,7 +37,7 @@ public class DBQueries {
 			}
 			
 			if (count == 0)
-				throw new LoginException("Invalid UserName or Password!");
+				throw new DistinctException("Invalid UserName or Password!");
 				     
 	    
 		} catch (SQLException e) {
