@@ -34,6 +34,10 @@ public class BizLogicProcess
 			DBQueries.login(vo);
 			System.out.println("login checkpoint");
 		}
+		if (message == "FORGOT_PASSWORD") {
+			DBQueries.forgotPassword(vo);
+			System.out.println("Forgot password checkpoint");
+		}
 	}
 		// search flights
 		// delete flights 

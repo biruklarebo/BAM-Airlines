@@ -11,6 +11,7 @@ import edu.gsu.common.Customer;
 import edu.gsu.common.Flight;
 import edu.gsu.common.VO;
 import edu.gsu.excpetions.DistinctException;
+import edu.gsu.gui.AlertBox;
 import edu.gsu.db.ConnectDatbase;
 public class DBQueries {
 	
@@ -78,7 +79,36 @@ public class DBQueries {
 	}
 	
 	//add forgot password queries here!
-	
+		public static void forgotPassword(VO vo) throws Exception {
+			Customer co = vo.getCustomer();	
+			
+			System.out.println("Connecting...");
+			
+			Connection con = ConnectDatbase.getConnection();
+			PreparedStatement smt = con.prepareStatement(Queries.FORGOT_PASSWORD);
+			smt.setString(1, co.getUserName());
+			smt.setString(2, co.getCustomerSecurityQuestion());
+			
+			ResultSet resultset = smt.executeQuery();
+			while (resultset.next()) {
+				if(!resultset.getString("customerSecurityAnswer").equals(co.getCustomerSecurityAnswer()))
+					throw new Exception("Incorrect Answer or Username");
+			}		
+			
+			
+			smt = con.prepareStatement(Queries.GET_PASSWORD);
+			smt.setString(1, co.getCustomerSecurityAnswer());
+			smt.setString(2, co.getUserName());
+			resultset = smt.executeQuery();
+			while (resultset.next()) {
+				AlertBox.display("Your password", "Your password is " + resultset.getString("password"));
+				}
+			}
+			
+		
+		
+		
+		
 	public static void getFlights(VO vo) throws Exception {
 		Customer co = vo.getCustomer();
 		// can I run a query on reservation table that select all teh rows with customerID comes from co
