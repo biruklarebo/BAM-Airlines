@@ -5,3 +5,23 @@
     -fx-base: rgb(132, 145, 47);
     -fx-background: rgb(225, 228, 203);
 }
+.root{
+    -fx-font-size: 16pt;
+    -fx-font-family: "Courier New";
+    -fx-base: rgb(132, 145, 47);
+    -fx-background: rgb(225, 228, 203);
+    
+    
+}
+
+.date-picker .text-field{
+    	-fx-control-inner-background: white ;
+
+    	
+    }
+    
+ .calendar-header {
+-fx-background-color: #1d1d1d;
+-fx-base: #1d1d1d;
+-fx-text-fill: white;
+}
