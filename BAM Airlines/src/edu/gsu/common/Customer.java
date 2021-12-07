@@ -15,8 +15,8 @@ public class Customer
 	private String SSN;
 	private String customerSecurityQuestion;
 	private String customerSecurityAnswer;
-//	private ArrayList<Flight> flights;
-//	private Flight deletedFlight; // would make it so that a flight is deleted add business logic so that it deletes flight
+	private ArrayList<Flight> flights;
+	private Flight deletedFlight; // would make it so that a flight is deleted add business logic so that it deletes flight
 	
 	//
 	public Customer() 
@@ -111,13 +111,13 @@ public class Customer
 	{
 		this.customerSecurityAnswer = customerSecurityAnswer;
 	}
-//	public ArrayList<Flight> getFlights() 
+	public ArrayList<Flight> getFlights() 
 	{
-//		return flights;
+		return flights;
 	}
-//	public void setFlights(ArrayList<Flight> flights) 
+	public void setFlights(ArrayList<Flight> flights) 
 	{
-//		this.flights = flights;
+		this.flights = flights;
 	}
 //	public String getAction() 
 	{

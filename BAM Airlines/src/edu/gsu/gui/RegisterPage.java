@@ -15,6 +15,7 @@ import edu.gsu.common.Action;
 import edu.gsu.common.Customer;
 import edu.gsu.common.VO;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -150,6 +151,14 @@ private String[] stateOptions = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE",
 				  AlertBox.display("Error",e.getMessage());
 				  System.out.println(e);
 			  }
+			  Stage stage = new Stage();
+			  System.out.print("login clicked!");
+			  Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+			  Scene scene = new Scene(root);
+			  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			  stage.setScene(scene);
+			  stage.setTitle("Login to your new account");
+			  stage.show();
 			  
 			  
 		  }

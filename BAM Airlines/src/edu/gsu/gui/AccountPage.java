@@ -61,9 +61,9 @@ public class AccountPage extends Application {
 
     }
 
-    //public static void main(String[] args) {
-    //    Application.launch(args);
+    public static void main(String[] args) {
+    	Application.launch(args);
     
-	//} 
+	} 
 }
 

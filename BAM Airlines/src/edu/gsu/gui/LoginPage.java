@@ -27,7 +27,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.*;
 import javafx.fxml.FXMLLoader;
-
+import javafx.scene.Node;
 
 
 
@@ -62,12 +62,25 @@ public class LoginPage extends Application {
 	  }
   }
 	  public void registerClicked(MouseEvent event) throws IOException {
+		  Stage stage = new Stage();
 		  System.out.print("register clicked!");
-		 
-	
-	  
-	  
+		  Parent root = FXMLLoader.load(getClass().getResource("RegisterPage.fxml"));
+		  Scene scene = new Scene(root);
+		  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		  stage.setScene(scene);
+		  stage.setTitle("Create an Account");
+		  stage.show();
   }
+	  public void forgotPasswordClicked(MouseEvent event) throws IOException {
+		  Stage stage = new Stage();
+		  System.out.print("register clicked!");
+		  Parent root = FXMLLoader.load(getClass().getResource("ForgotPassword.fxml"));
+		  Scene scene = new Scene(root);
+		  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		  stage.setScene(scene);
+		  stage.setTitle("Forgot Password");
+		  stage.show();  
+	  }
 
   
   

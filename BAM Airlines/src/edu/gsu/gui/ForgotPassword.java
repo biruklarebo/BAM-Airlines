@@ -9,6 +9,7 @@ import edu.gsu.common.Customer;
 import edu.gsu.common.VO;
 import javafx.application.Application;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -100,6 +101,17 @@ public class ForgotPassword extends Application implements Initializable{
 			  System.out.println(e);
 		  }
 	}
+		public void backtoLoginClicked (MouseEvent event) throws IOException {
+			  Stage stage = new Stage();
+			  System.out.print("register clicked!");
+			  Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+			  Scene scene = new Scene(root);
+			  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			  stage.setScene(scene);
+			  stage.setTitle("Welcome to BAM airlines");
+			  stage.show();  
+		  }
+		
 	public static void main(String[] args) {
 	    launch(args);  
 	  }
