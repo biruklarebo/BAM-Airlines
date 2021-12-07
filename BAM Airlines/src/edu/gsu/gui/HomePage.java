@@ -198,7 +198,7 @@ public class HomePage extends Application implements Initializable{
 	}
 	
 	public void reserveClicked(MouseEvent event) throws IOException{
-		
+		Customer customer = FlightTable.getSelectionModel().getSelectedItem().setFlights(flights);
 	}
 	
 	public void deleteClicked(MouseEvent event) throws IOException{

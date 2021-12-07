@@ -111,7 +111,7 @@ public class Customer
 	{
 		this.customerSecurityAnswer = customerSecurityAnswer;
 	}
-	public ArrayList<Flight> getFlights() 
+/*	public ArrayList<Flight> getFlights() 
 	{
 		return flights;
 	}
@@ -119,6 +119,7 @@ public class Customer
 	{
 		this.flights = flights;
 	}
+*/	
 //	public String getAction() 
 	{
 //		return action;
