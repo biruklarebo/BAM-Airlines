@@ -58,18 +58,22 @@ public class LoginPage extends Application {
 		  vo.setCustomer(co);
 		  co.setUserName(username.getText());
 		  co.setPassword(password.getText());
-		  	 ExceptionHandler.process(vo, "LOGIN");
-		  
-		  	 
-		  	 Stage stage = new Stage();
+		  if(ExceptionHandler.process(vo, "LOGIN") == true) {	  	 
+		  	  Stage stage = new Stage();
 			  System.out.print("register clicked!");
-			  Parent root1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+			  String user = username.getText();
+			  FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+			  Parent root1 = loader.load();
+			  //Parent root1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+			  HomePage homePage = loader.getController();
+			  homePage.displayName(user);
 			  Scene scene = new Scene(root1);
 			  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			  stage.setScene(scene);
 			  stage.setTitle("Home");
 			  stage.show(); 
 		  	 
+		  }
 	  }
 		  	 
 	  

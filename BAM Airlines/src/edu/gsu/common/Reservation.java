@@ -25,7 +25,7 @@ public class Reservation {
 		this.departureDate = departureDate;
 		this.departureTime = departureTime;
 		this.arrivalCity = arrivalCity;
-		
+		//this.userName = userName;
 		
 	}
 	

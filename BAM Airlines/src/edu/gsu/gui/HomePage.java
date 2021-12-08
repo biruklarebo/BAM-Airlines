@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -59,7 +60,10 @@ public class HomePage extends Application implements Initializable{
 	private TableColumn<Flight, String> departureCity;
 
 	@FXML
-	private TableColumn<Flight, String> flightDate;
+	private TableColumn<Flight, String> DepartDate;
+	
+	@FXML
+	private TableColumn<Flight, String> ArrivalDate;
 
 	@FXML
 	private TableColumn<Flight, String> departureTime;
@@ -72,6 +76,9 @@ public class HomePage extends Application implements Initializable{
 
 	@FXML
 	private DatePicker dateSelect;
+	
+	@FXML
+	private DatePicker arrivedateSelect;
 	
 	@FXML 
 	private TableColumn<Flight, String> airline;
@@ -111,6 +118,8 @@ public class HomePage extends Application implements Initializable{
 	@FXML
 	private static String userName;
 	
+	@FXML Label userLabel;
+	
 	
 	public void start(Stage fourthStage) throws Exception {
 		try {
@@ -121,14 +130,19 @@ public class HomePage extends Application implements Initializable{
 			  fourthStage.setTitle("Home");
 			  fourthStage.setScene(scene);
 			  fourthStage.show();
+			  refreshPage();
 			  
 		  }catch (Exception e) {
 			  e.printStackTrace();
 		  }
 	}
 	public static void main(String[] args) {
-	    launch(args);  
+	    launch(args);
 	  }
+	public void displayName(String username) {
+		userLabel.setText("Welcome " + username);
+		userName = username;
+	}
 	
 	
 	
@@ -158,7 +172,7 @@ public class HomePage extends Application implements Initializable{
 		
 	}
 	
-	
+
 	public void updateFlights(String message) {
 		try {
 			airline.setCellValueFactory(new PropertyValueFactory<>("airlineName"));
@@ -167,24 +181,25 @@ public class HomePage extends Application implements Initializable{
 			arrivalCity.setCellValueFactory(new PropertyValueFactory<>("arrivalCity"));
 			departureTime.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
 			arrivalTime.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
-			flightDate.setCellValueFactory(new PropertyValueFactory<>("flightDate"));
 			price.setCellValueFactory(new PropertyValueFactory<>("price"));
 			seats.setCellValueFactory(new PropertyValueFactory<>("seatNumber"));
+			ArrivalDate.setCellValueFactory(new PropertyValueFactory<>("arrivalDate"));
+			DepartDate.setCellValueFactory(new PropertyValueFactory<>("departureDate"));
 			
 			Connection con = ConnectDatbase.getConnection();
 			ResultSet resultSet = con.createStatement().executeQuery(message);
 			
 			while (resultSet.next()) {
 				flights.add(new Flight(resultSet.getInt("flightNumber"), resultSet.getString("airlineName"), resultSet.getString("departureCity"),
-						resultSet.getString("arrivalCity"), resultSet.getString("arrivalTime"), resultSet.getString("departureTime"), resultSet.getInt("price"), resultSet.getString("flightDate"),
-						resultSet.getInt("seatCount")));
+						resultSet.getString("arrivalCity"), resultSet.getString("arrivalTime"), resultSet.getString("departureTime"), resultSet.getInt("price"), resultSet.getString("departureDate"), 
+						resultSet.getString("arrivalDate"), resultSet.getInt("seatCount")));
 			}
 			FlightTable.setItems(flights);
 			con.close();
 			
 			
 			
-		}catch (Exception e) {
+		}catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
@@ -194,30 +209,40 @@ public class HomePage extends Application implements Initializable{
 			cFlightNum.setCellValueFactory(new PropertyValueFactory<>("flightNumber"));
 			cArrivalCity.setCellValueFactory(new PropertyValueFactory<>("arrivalCity"));
 			cDepTime.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
-			cDepDate.setCellValueFactory(new PropertyValueFactory<>("flightDate"));
+			cDepDate.setCellValueFactory(new PropertyValueFactory<>("departureDate"));
 			
 			
 			Connection con = ConnectDatbase.getConnection();
-			ResultSet resultSet = con.createStatement().executeQuery(message);
+			PreparedStatement smt = con.prepareStatement(message);
+			smt.setString(1, userName);
+			ResultSet resultSet = smt.executeQuery();
+			
 			
 			while (resultSet.next()) {
 				reservation.add(new Reservation(resultSet.getInt("flightNumber"), resultSet.getString("airlineName"),
-						resultSet.getString("arrivalCity"), resultSet.getString("departureTime"), resultSet.getString("flightDate").toString()));
+						resultSet.getString("arrivalCity"), resultSet.getString("departureTime"), resultSet.getString("departureDate")));
 			}
-			FlightTable.setItems(flights);
+			cflights.setItems(reservation);
 			con.close();
 			
 			
 			
-		}catch (Exception e) {
+		}catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	public void refreshPage() {
+		flights.clear();
+		reservation.clear();
+		updateFlights(Queries.GET_FLIGHT);
+		updateReservation(Queries.GET_RESERVATION);
 	}
 	
 	public void searchClicked(MouseEvent event) throws IOException {
 		  flights.clear();
 		  try {
-			  updateFlights("SELECT * FROM flight WHERE arrivalCity =" + " '" + arrive.getValue() + "' AND departureCity =" + " '" + depart.getValue() + "' AND flightDate =" + " '" + dateSelect.getValue().toString() + "'");	  
+			  updateFlights(Queries.GET_FLIGHT +" WHERE arrivalCity =" + " '" + arrive.getValue() + "' AND departureCity =" + " '" + depart.getValue() + "' AND departureDate =" + " '" + dateSelect.getValue().toString() + "' AND arrivalDate =" + " '" 
+					  								+ arrivedateSelect.getValue().toString() + "'");	  
 		  }catch(Exception e) {
 			  FlightTable.setItems(flights);
 		  }
@@ -230,14 +255,22 @@ public class HomePage extends Application implements Initializable{
 				throw new DistinctException("Flight is full") ;
 		}
 		else {
+			reservation.clear();
 			VO vo = new VO();
-			Reservation reservation = new Reservation();
-			reservation.setReservationNum(("T" + (int) (Math.random() * 999)));
-			
-			vo.setReservation(reservation);
-			
-			
+			Reservation r = new Reservation();
+			r.setReservationNum(("T" + (int) (Math.random() * 999)));
+			r.setFlightNumber(flight.getFlightNumber());
+			r.setUserName(userName);
+			r.setAirlineName(flight.getAirlineName());
+			r.setArrivalCity(flight.getArrivalCity());;
+			r.setDepartureDate(flight.getDepartureDate().toString());
+			r.setDepartureTime(flight.getDepartureTime());;
+			vo.setReservation(r);
+			ExceptionHandler.process(vo, "CREATE_RESERVATION");
+			updateReservation(Queries.GET_RESERVATION);
+			cflights.setItems(reservation);
 		}
+		
 		
 			
 	}
@@ -247,7 +280,7 @@ public class HomePage extends Application implements Initializable{
 	}
 	
 	public void refreshClicked(MouseEvent event) throws IOException{
-		 
+		 refreshPage();
 		
 	}
 			

@@ -23,9 +23,11 @@
                 <TableColumn fx:id="FlightNumber" prefWidth="140.0" text="Flight#" />
                   <TableColumn fx:id="departureCity" prefWidth="166.0" text="Departure City" />
                   <TableColumn fx:id="arrivalCity" prefWidth="57.0" text="Arrival City" />
-                  <TableColumn fx:id="departureTime" prefWidth="226.0" text="Departure Time" />
+                  <TableColumn fx:id="departureTime" prefWidth="226.0" text="Depart Time" />
                   <TableColumn fx:id="arrivalTime" prefWidth="75.0" text="Arrival Time" />
-                  <TableColumn fx:id="flightDate" prefWidth="106.0" text="Date" />
+                  <TableColumn fx:id="DepartDate" prefWidth="131.0" text="Depart Date" />
+                  <TableColumn fx:id="ArrivalDate" prefWidth="92.0" text="Arrival Date" />
+                  <TableColumn prefWidth="75.0" text="Column X" />
                   <TableColumn fx:id="seats" prefWidth="142.0" text="Seats" />
                   <TableColumn fx:id="price" prefWidth="75.0" text="Price" />
               </columns>
@@ -35,7 +37,7 @@
             </TableView>
             <ChoiceBox fx:id="depart" layoutX="21.0" layoutY="53.0" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #b2aaaa#b2aaaa #b2aaaa#b2aaaa;" />
             <ChoiceBox fx:id="arrive" layoutX="428.0" layoutY="53.0" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #b2aaaa#b2aaaa #b2aaaa#b2aaaa;" />
-            <Label layoutX="741.0" layoutY="76.0" prefHeight="35.0" prefWidth="207.0" text="Reserved Flights" textFill="WHITE">
+            <Label layoutX="741.0" layoutY="76.0" prefHeight="43.0" prefWidth="239.0" text="Reserved Flights" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font></Label>
@@ -43,7 +45,7 @@
                <font>
                   <Font size="28.0" />
                </font></Label>
-            <Button fx:id="search" layoutX="37.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#searchClicked" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: #b2aaaa#b2aaaa #b2aaaa#b2aaaa;" text="Search">
+            <Button fx:id="search" layoutX="118.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#searchClicked" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: #b2aaaa#b2aaaa #b2aaaa#b2aaaa;" text="Search">
                <font>
                   <Font size="20.0" />
                </font></Button>
@@ -55,15 +57,15 @@
                <font>
                   <Font size="16.0" />
                </font></Label>
-            <Button fx:id="reserve" layoutX="34.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#reserveClicked" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: #b2aaaa#b2aaaa #b2aaaa#b2aaaa;" text="Reserve">
+            <Button fx:id="reserve" layoutX="118.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#reserveClicked" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: #b2aaaa#b2aaaa #b2aaaa#b2aaaa;" text="Reserve">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="delete" layoutX="213.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#deleteClicked" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #b2aaaa#b2aaaa #b2aaaa#b2aaaa;" text="Delete">
+            <Button fx:id="delete" layoutX="280.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#deleteClicked" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #b2aaaa#b2aaaa #b2aaaa#b2aaaa;" text="Delete">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="refresh" layoutX="213.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#refreshClicked" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #b2aaaa#b2aaaa #b2aaaa#b2aaaa;" text="Refresh">
+            <Button fx:id="refresh" layoutX="280.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#refreshClicked" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #b2aaaa#b2aaaa #b2aaaa#b2aaaa;" text="Refresh">
                <font>
                   <Font size="20.0" />
                </font></Button>
@@ -84,6 +86,8 @@
                   <Font size="22.0" />
                </font></Button>
             <DatePicker fx:id="dateSelect" layoutX="155.0" layoutY="53.0" prefHeight="40.0" prefWidth="250.0" promptText="Departing Date" />
+            <Label fx:id="userLabel" layoutX="764.0" layoutY="29.0" prefHeight="26.0" prefWidth="126.0" text="Welcome" />
+            <DatePicker fx:id="arrivedateSelect" layoutX="155.0" layoutY="110.0" prefHeight="40.0" prefWidth="250.0" promptText="Arrival Date" />
          </children></AnchorPane>
          </items>
 </SplitPane>

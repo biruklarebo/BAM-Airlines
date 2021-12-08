@@ -14,7 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 
-public class AccountPage extends Application {
+public abstract class AccountPage extends Application {
 
 	
 	private Customer customer;
@@ -24,7 +24,7 @@ public class AccountPage extends Application {
 		
 		this.customer = customer;
 	}
-	  
+	  /*
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("ListView Experiment 1");
@@ -59,7 +59,7 @@ public class AccountPage extends Application {
         primaryStage.show();
 
 
-    }
+    }*/
 
     public static void main(String[] args) {
     	Application.launch(args);

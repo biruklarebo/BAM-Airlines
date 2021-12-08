@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectDatbase {
 		public static void main(String[] args) throws Exception {
@@ -14,10 +15,10 @@ public class ConnectDatbase {
 		// REPLACE IP BASED ON WHAT WIFI YOU ARE ON 
 		//  gsu IP 10.250.22.166
 		// regular IP 10.0.0.103
-		public static Connection getConnection() throws Exception {
+		public static Connection getConnection() throws ClassNotFoundException, SQLException {
 			try {
 				String driver = "com.mysql.cj.jdbc.Driver";
-				String url = "jdbc:mysql://10.250.22.166:3306/bamdb";
+				String url = "jdbc:mysql://10.0.0.103:3306/bamdb";
 				String username = "root";
 				String password = "Java123*";
 				Class.forName(driver);

@@ -122,14 +122,19 @@ public class DBQueries {
 		try {
 			smt.execute();
 			}catch(SQLException e){
+				System.out.println(e.getMessage());
 				throw new SQLException("You can not double book flights!");
 			}
 		
 		PreparedStatement smt1 = con.prepareStatement(Queries.REMOVE_SEAT);
-		smt1.setInt(1, vo.getReservation().getFlightNumber());
+		smt1.setInt(1, reservation.getFlightNumber());
 		smt1.execute();
 		smt1.close();
 		
+		PreparedStatement smt2 = con.prepareStatement(Queries.GET_RESERVATION);
+		smt2.setString(1, reservation.getUserName());
+		smt2.execute();
+		smt2.close();
 		
 	}
 	
