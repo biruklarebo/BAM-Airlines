@@ -63,11 +63,11 @@ public class LoginPage extends Application {
 		  	 
 		  	 Stage stage = new Stage();
 			  System.out.print("register clicked!");
-			  Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-			  Scene scene = new Scene(root);
+			  Parent root1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+			  Scene scene = new Scene(root1);
 			  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			  stage.setScene(scene);
-			  stage.setTitle("Welcome to BAM airlines");
+			  stage.setTitle("Home");
 			  stage.show(); 
 		  	 
 	  }
