@@ -5,14 +5,11 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 import edu.gsu.common.*;
-import edu.gsu.common.VO;
-import edu.gsu.common.Customer;
-import edu.gsu.common.Flight;
 import edu.gsu.gui.ExceptionHandler;
 import edu.gsu.db.ConnectDatbase;
 import edu.gsu.db.DBQueries;
 import edu.gsu.db.Queries;
-import edu.gsu.common.VO;
+import edu.gsu.excpetions.DistinctException;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -83,19 +80,19 @@ public class HomePage extends Application implements Initializable{
 	private TableColumn<Flight, String> arrivalTime;
 	
 	@FXML
-	private TableView<Customer> cflights;
+	private TableView<Reservation> cflights;
 	
 	@FXML
-	private TableColumn<Customer, String> Airline;
+	private TableColumn<Reservation, String> Airline;
 	
 	@FXML
-	private TableColumn<Customer, Integer> cFlightNum;
+	private TableColumn<Reservation, Integer> cFlightNum;
 	@FXML
-	private TableColumn<Customer, String> cDepDate;
+	private TableColumn<Reservation, String> cDepDate;
 	@FXML
-	private TableColumn<Customer, String> cDepTime;
+	private TableColumn<Reservation, String> cDepTime;
 	@FXML
-	private TableColumn<Customer, String> cArrivalCity;
+	private TableColumn<Reservation, String> cArrivalCity;
 	
 	@FXML 
 	private Button search;
@@ -110,6 +107,9 @@ public class HomePage extends Application implements Initializable{
 	
 	@FXML 
 	private Button logout;
+	
+	@FXML
+	private static String userName;
 	
 	
 	public void start(Stage fourthStage) throws Exception {
@@ -143,6 +143,7 @@ public class HomePage extends Application implements Initializable{
 	ObservableList<Customer> customerFlights = FXCollections.observableArrayList();
 	ObservableList<String> arrivaltime = FXCollections.observableArrayList("1:00 AM" , "2:00 AM" , "3:00 AM", "7:00 AM" , "1:00 PM" , "3:00 PM" , "5:00 PM" , "9:00 PM");
 	ObservableList<String> departuretime = FXCollections.observableArrayList("1:00 AM" , "2:00 AM" , "3:00 AM", "7:00 AM" , "1:00 PM" , "3:00 PM" , "5:00 PM" , "9:00 PM");
+	ObservableList<Reservation> reservation = FXCollections.observableArrayList();
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -187,6 +188,31 @@ public class HomePage extends Application implements Initializable{
 			e.printStackTrace();
 		}
 	}
+	public void updateReservation(String message) {
+		try {
+			Airline.setCellValueFactory(new PropertyValueFactory<>("airlineName"));
+			cFlightNum.setCellValueFactory(new PropertyValueFactory<>("flightNumber"));
+			cArrivalCity.setCellValueFactory(new PropertyValueFactory<>("arrivalCity"));
+			cDepTime.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
+			cDepDate.setCellValueFactory(new PropertyValueFactory<>("flightDate"));
+			
+			
+			Connection con = ConnectDatbase.getConnection();
+			ResultSet resultSet = con.createStatement().executeQuery(message);
+			
+			while (resultSet.next()) {
+				reservation.add(new Reservation(resultSet.getInt("flightNumber"), resultSet.getString("airlineName"),
+						resultSet.getString("arrivalCity"), resultSet.getString("departureTime"), resultSet.getString("flightDate").toString()));
+			}
+			FlightTable.setItems(flights);
+			con.close();
+			
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public void searchClicked(MouseEvent event) throws IOException {
 		  flights.clear();
@@ -197,8 +223,23 @@ public class HomePage extends Application implements Initializable{
 		  }
 	}
 	
-	public void reserveClicked(MouseEvent event) throws IOException{
-		Customer customer = FlightTable.getSelectionModel().getSelectedItem().setFlights(flights);
+	public void reserveClicked(MouseEvent event) throws IOException, DistinctException{
+		Flight flight = FlightTable.getSelectionModel().getSelectedItem();
+		if (flight.getSeatNumber() == 0) {
+			
+				throw new DistinctException("Flight is full") ;
+		}
+		else {
+			VO vo = new VO();
+			Reservation reservation = new Reservation();
+			reservation.setReservationNum(("T" + (int) (Math.random() * 999)));
+			
+			vo.setReservation(reservation);
+			
+			
+		}
+		
+			
 	}
 	
 	public void deleteClicked(MouseEvent event) throws IOException{
@@ -206,8 +247,13 @@ public class HomePage extends Application implements Initializable{
 	}
 	
 	public void refreshClicked(MouseEvent event) throws IOException{
+		 
 		
 	}
+			
+	
+		
+	
 	
 	public void logOutClicked(MouseEvent event) throws IOException{
 		

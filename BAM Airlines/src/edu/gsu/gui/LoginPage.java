@@ -59,7 +59,20 @@ public class LoginPage extends Application {
 		  co.setUserName(username.getText());
 		  co.setPassword(password.getText());
 		  	 ExceptionHandler.process(vo, "LOGIN");
+		  
+		  	 
+		  	 Stage stage = new Stage();
+			  System.out.print("register clicked!");
+			  Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+			  Scene scene = new Scene(root);
+			  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			  stage.setScene(scene);
+			  stage.setTitle("Welcome to BAM airlines");
+			  stage.show(); 
+		  	 
 	  }
+		  	 
+	  
   }
 	  public void registerClicked(MouseEvent event) throws IOException {
 		  Stage stage = new Stage();

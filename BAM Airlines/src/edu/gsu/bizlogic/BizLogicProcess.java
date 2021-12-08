@@ -38,6 +38,10 @@ public class BizLogicProcess
 			DBQueries.forgotPassword(vo);
 			System.out.println("Forgot password checkpoint");
 		}
+		if (message == "CREATE_RESERVATION") {
+			DBQueries.reserveFlight(vo);
+			System.out.println("Reserve Flight checkpoint");
+		}
 	}
 		// search flights
 		// delete flights 

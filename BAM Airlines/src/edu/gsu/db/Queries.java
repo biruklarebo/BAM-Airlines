@@ -7,4 +7,8 @@ public class Queries {
 	        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	public static final String FORGOT_PASSWORD = "SELECT customerSecurityAnswer FROM customer WHERE userName = ? AND customerSecurityQuestion = ?";
 	public static final String GET_PASSWORD = "SELECT password FROM customer WHERE customerSecurityAnswer = ? AND userName = ?";
+	public static final String CREATE_RESERVATION = "INSERT INTO reservation (reservationNum, airlineName, flightNumber, departureDate, departureTime, arrivalCity, userName)" + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+	public static final String REMOVE_SEAT = "UPDATE flight SET seatCount = seatCount - 1 WHERE (flightNumber = ?)";
 }
+
+

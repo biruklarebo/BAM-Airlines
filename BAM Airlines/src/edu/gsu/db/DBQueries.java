@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import edu.gsu.common.Customer;
 import edu.gsu.common.Flight;
+import edu.gsu.common.Reservation;
 import edu.gsu.common.VO;
 import edu.gsu.excpetions.DistinctException;
 import edu.gsu.gui.AlertBox;
@@ -104,7 +105,34 @@ public class DBQueries {
 				AlertBox.display("Your password", "Your password is " + resultset.getString("password"));
 				}
 			}
-			
+	public static void reserveFlight(VO vo) throws SQLException, Exception{
+		
+		Reservation reservation = vo.getReservation();
+		Connection con = ConnectDatbase.getConnection();
+		PreparedStatement smt = con.prepareStatement(Queries.CREATE_RESERVATION);
+		smt.setString(1, reservation.getReservationNum());
+		smt.setString(2, reservation.getAirlineName());
+		smt.setInt(3, reservation.getFlightNumber());
+		smt.setString(4, reservation.getDepartureDate());
+		smt.setString(5, reservation.getDepartureTime());
+		smt.setString(6, reservation.getArrivalCity());
+		smt.setString(7, reservation.getUserName());
+		
+		
+		try {
+			smt.execute();
+			}catch(SQLException e){
+				throw new SQLException("You can not double book flights!");
+			}
+		
+		PreparedStatement smt1 = con.prepareStatement(Queries.REMOVE_SEAT);
+		smt1.setInt(1, vo.getReservation().getFlightNumber());
+		smt1.execute();
+		smt1.close();
+		
+		
+	}
+	
 		
 		
 		
