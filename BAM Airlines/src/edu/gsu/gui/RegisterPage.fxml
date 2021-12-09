@@ -53,6 +53,7 @@
             <TextField fx:id="securityQuesitonAnswer" layoutX="283.0" layoutY="341.0" prefHeight="25.0" prefWidth="264.0" />
             <Button fx:id="submit" layoutX="248.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#submitClicked" text="Submit" />
             <Label layoutX="14.0" layoutY="6.0" text="BAM Airlines" />
+            <Button fx:id="backtologin" layoutX="497.0" layoutY="453.0" mnemonicParsing="false" onMouseClicked="#backToLoginClicked" text="Back to login" />
          </children>
       </AnchorPane>
    </center>

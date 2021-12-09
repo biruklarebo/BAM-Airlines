@@ -68,6 +68,8 @@ public class RegisterPage extends Application implements Initializable{
 	private TextField securityQuesitonAnswer;
 	@FXML 
 	private Button submit;
+	@FXML 
+	private Button backtologin;
 
 	@Override
 	public void start(Stage secondStage) throws Exception {
@@ -167,6 +169,19 @@ private String[] stateOptions = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE",
 		 
 		  
 		  
+	}
+	
+public void backToLoginClicked(MouseEvent event) throws IOException{
+		
+		Stage stage = new Stage();
+		  System.out.print("Logout Clicked!");
+		  Parent root4 = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+		  Scene scene = new Scene(root4);
+		  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		  stage.setScene(scene);
+		  stage.setTitle("Welcome to BAM Airlines!");
+		  stage.show();
+		
 	}
 	
 	public static void main(String[] args) {
