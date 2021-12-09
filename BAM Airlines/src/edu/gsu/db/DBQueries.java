@@ -138,6 +138,18 @@ public class DBQueries {
 		
 	}
 	
+	public static void deleteFlight(VO vo) throws SQLException, Exception{
+		
+		Reservation reservation = vo.getReservation();
+		Connection con = ConnectDatbase.getConnection();
+		PreparedStatement smt = con.prepareStatement(Queries.DELETE_RESERVATION);
+		smt.setString(1, reservation.getUserName());
+		smt.setInt(2, reservation.getFlightNumber());
+		
+		
+	}
+	
+	
 		
 		
 		

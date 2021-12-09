@@ -11,7 +11,10 @@ public class Queries {
 	public static final String REMOVE_SEAT = "UPDATE flight SET seatCount = seatCount - 1 WHERE (flightNumber = ?)";
 	public static final String GET_RESERVATION = "SELECT airlineName, flightNumber, departureDate, departureTime, arrivalCity FROM reservation WHERE userName = ?";
 	public static final String GET_FLIGHT = "SELECT * from flight";
-	// to do an already booked flight (by flight number) check, do same as login select reservation where flight number and departure date are the same, then throw exception if the count is > 1
+	// to do an already booked flight (by flight number) check, do same as login select reservation where flight number and departure date are the same, then throw exception if the count is > 1	
+	public static final String DELETE_RESERVATION = "DELETE * FROM reservation WHERE ('userName = ? AND flightNumber = ?";
+
+
 }
 
 

@@ -31,15 +31,13 @@ import javafx.stage.Stage;
 
 
 public class HomePage extends Application implements Initializable{
+	
 	@FXML
 	private AnchorPane HomePage;
 	
 	@FXML
 	private SplitPane CustomerPage;
 	
-	
-
-
 	@FXML
 	private TableView<Flight> FlightTable;
 	
@@ -48,7 +46,6 @@ public class HomePage extends Application implements Initializable{
 	
 	@FXML
 	private ChoiceBox<String> arrive;
-	
 
 	@FXML
 	private TableColumn<Flight, Integer> FlightNumber;
@@ -167,9 +164,8 @@ public class HomePage extends Application implements Initializable{
 		arrive.setItems(arrivalCities);
 		arrive.getSelectionModel().select(31);
 		
-		
-		
-		
+		refreshPage(); 
+
 	}
 	
 
@@ -277,6 +273,25 @@ public class HomePage extends Application implements Initializable{
 	
 	public void deleteClicked(MouseEvent event) throws IOException{
 		
+		Reservation reservation = cflights.getSelectionModel().getSelectedItem();
+		
+		if (reservation == null) {
+			AlertBox.display("Error", "Can't delete flight without a selection.");
+		}
+		else {
+			VO vo = new VO();
+			Reservation r = new Reservation();
+			r.setUserName(userName);
+			r.setFlightNumber(reservation.getFlightNumber());
+			vo.setReservation(r);
+			
+			
+			
+			ExceptionHandler.process(vo, "delete ticket");
+		}
+		
+		
+		
 	}
 	
 	public void refreshClicked(MouseEvent event) throws IOException{
@@ -289,6 +304,15 @@ public class HomePage extends Application implements Initializable{
 	
 	
 	public void logOutClicked(MouseEvent event) throws IOException{
+		
+		Stage stage = new Stage();
+		  System.out.print("Logout Clicked!");
+		  Parent root4 = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+		  Scene scene = new Scene(root4);
+		  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		  stage.setScene(scene);
+		  stage.setTitle("Welcome to BAM Airlines!");
+		  stage.show();
 		
 	}
 	

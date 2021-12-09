@@ -42,6 +42,11 @@ public class BizLogicProcess
 			DBQueries.reserveFlight(vo);
 			System.out.println("Reserve Flight checkpoint");
 		}
+		if (message == "DELETE_RESERVATION") {
+			DBQueries.deleteFlight(vo);
+			System.out.println("Flight has been removed from reservation");
+		}
+		
 	}
 		// search flights
 		// delete flights 
