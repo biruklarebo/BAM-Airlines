@@ -46,6 +46,10 @@ public class BizLogicProcess
 			DBQueries.deleteFlight(vo);
 			System.out.println("Flight has been removed from reservation");
 		}
+		if (message == "CHECK_RESERVATION") {
+			DBQueries.doubleReserve(vo);
+			System.out.println("Flight has been checked for reservation");
+		}
 		
 	}
 		// search flights

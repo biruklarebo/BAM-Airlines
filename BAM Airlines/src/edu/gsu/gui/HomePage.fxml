@@ -27,7 +27,6 @@
                   <TableColumn fx:id="arrivalTime" prefWidth="75.0" text="Arrival Time" />
                   <TableColumn fx:id="DepartDate" prefWidth="131.0" text="Depart Date" />
                   <TableColumn fx:id="ArrivalDate" prefWidth="92.0" text="Arrival Date" />
-                  <TableColumn prefWidth="75.0" text="Column X" />
                   <TableColumn fx:id="seats" prefWidth="142.0" text="Seats" />
                   <TableColumn fx:id="price" prefWidth="75.0" text="Price" />
               </columns>
@@ -70,6 +69,9 @@
                   <Font size="20.0" />
                </font></Button>
             <TableView fx:id="cflights" layoutX="492.0" layoutY="120.0" prefHeight="200.0" prefWidth="704.0" style="-fx-background-color: #ffffff;">
+              <placeholder>
+             	<Label text="No Flights Available" />
+             </placeholder>
               <columns>
                 <TableColumn fx:id="Airline" prefWidth="105.0" text="Airline" />
                 <TableColumn fx:id="cFlightNum" minWidth="0.0" prefWidth="124.0" text="Flight Number" />

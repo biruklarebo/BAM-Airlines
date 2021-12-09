@@ -248,12 +248,13 @@ public class HomePage extends Application implements Initializable{
 		Flight flight = FlightTable.getSelectionModel().getSelectedItem();
 		if (flight.getSeatNumber() == 0) {
 			
-				throw new DistinctException("Flight is full") ;
+				AlertBox.display("Error","Flight is full!") ;
 		}
 		else {
 			reservation.clear();
 			VO vo = new VO();
 			Reservation r = new Reservation();
+			ExceptionHandler.process(vo, "CHECK_DUPLICATE_RESERVATION");
 			r.setReservationNum(("T" + (int) (Math.random() * 999)));
 			r.setFlightNumber(flight.getFlightNumber());
 			r.setUserName(userName);
@@ -262,10 +263,17 @@ public class HomePage extends Application implements Initializable{
 			r.setDepartureDate(flight.getDepartureDate().toString());
 			r.setDepartureTime(flight.getDepartureTime());;
 			vo.setReservation(r);
+			if (ExceptionHandler.process(vo,"CHECK_RESERVATION") == true) {
 			ExceptionHandler.process(vo, "CREATE_RESERVATION");
 			updateReservation(Queries.GET_RESERVATION);
 			cflights.setItems(reservation);
+			}
+			else{
+				refreshPage();
+			}
+			
 		}
+			
 		
 		
 			
@@ -285,10 +293,8 @@ public class HomePage extends Application implements Initializable{
 			r.setFlightNumber(reservation.getFlightNumber());
 			vo.setReservation(r);
 			//flights will delete
-			
-			
-			
-			ExceptionHandler.process(vo, "delete ticket");
+			ExceptionHandler.process(vo, "DELETE_RESERVATION");
+			refreshPage();
 		}
 		
 		

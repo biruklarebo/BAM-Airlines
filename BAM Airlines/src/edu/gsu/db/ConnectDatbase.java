@@ -18,7 +18,7 @@ public class ConnectDatbase {
 		public static Connection getConnection() throws ClassNotFoundException, SQLException {
 			try {
 				String driver = "com.mysql.cj.jdbc.Driver";
-				String url = "jdbc:mysql://10.0.0.103:3306/bamdb";
+				String url = "jdbc:mysql://10.250.22.166:3306/bamdb";
 				String username = "root";
 				String password = "Java123*";
 				Class.forName(driver);

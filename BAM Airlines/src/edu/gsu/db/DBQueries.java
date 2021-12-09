@@ -145,11 +145,53 @@ public class DBQueries {
 		PreparedStatement smt = con.prepareStatement(Queries.DELETE_RESERVATION);
 		smt.setString(1, reservation.getUserName());
 		smt.setInt(2, reservation.getFlightNumber());
+		try {
+			smt.execute();
+			}catch(SQLException e){
+				System.out.println(e.getMessage());
+				throw new SQLException("You cannot delete this flight!");
+			}
+		
+		PreparedStatement smt1 = con.prepareStatement(Queries.ADD_SEAT);
+		smt1.setInt(1, reservation.getFlightNumber());
+		smt1.execute();
+		smt1.close();
 		
 		
 	}
 	
-	
+	public static void doubleReserve(VO vo) throws Exception {
+		Reservation res = vo.getReservation();	
+		
+		Connection con = ConnectDatbase.getConnection();
+		try {
+			PreparedStatement smt = con.prepareStatement(Queries.CHECK_RESERVATION);
+	    
+			int flightNum = res.getFlightNumber();
+			String user = res.getUserName();
+			smt.setString(1, res.getUserName());
+			smt.setInt(2, res.getFlightNumber());
+			
+			ResultSet resultSet = smt.executeQuery();
+			
+			while (resultSet.next()) {
+				int flightNumber = resultSet.getInt("flightNumber");
+				String username = resultSet.getString("userName");
+				if((flightNum == flightNumber) && (user.equals(username))){
+					throw new DistinctException("You cannot book the same flight twice!");
+				}
+			}		     
+	    
+		} catch (SQLException e) {
+				// TODO Auto-generated catch block
+			System.out.println(e);
+			throw e;
+		}
+		finally {
+			
+			con.close();
+		}
+	}
 		
 		
 		
