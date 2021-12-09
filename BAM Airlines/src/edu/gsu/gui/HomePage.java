@@ -284,6 +284,7 @@ public class HomePage extends Application implements Initializable{
 			r.setUserName(userName);
 			r.setFlightNumber(reservation.getFlightNumber());
 			vo.setReservation(r);
+			//flights will delete
 			
 			
 			
