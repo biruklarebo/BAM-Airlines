@@ -8,6 +8,9 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="602.0" prefWidth="1219.0" styleClass="parent" stylesheets="@application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gsu.gui.HomePage">
@@ -36,7 +39,7 @@
             </TableView>
             <ChoiceBox fx:id="depart" layoutX="21.0" layoutY="53.0" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #b2aaaa#b2aaaa #b2aaaa#b2aaaa;" />
             <ChoiceBox fx:id="arrive" layoutX="428.0" layoutY="53.0" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #b2aaaa#b2aaaa #b2aaaa#b2aaaa;" />
-            <Label layoutX="741.0" layoutY="76.0" prefHeight="43.0" prefWidth="239.0" text="Reserved Flights" textFill="WHITE">
+            <Label layoutX="725.0" layoutY="73.0" prefHeight="43.0" prefWidth="239.0" text="Reserved Flights" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font></Label>
@@ -88,7 +91,23 @@
                   <Font size="22.0" />
                </font></Button>
             <DatePicker fx:id="dateSelect" layoutX="155.0" layoutY="53.0" prefHeight="40.0" prefWidth="250.0" promptText="Departing Date" />
-            <Label fx:id="userLabel" layoutX="764.0" layoutY="29.0" prefHeight="26.0" prefWidth="126.0" text="Welcome" />
+            <Label fx:id="userLabel" layoutX="764.0" layoutY="29.0" prefHeight="26.0" prefWidth="126.0">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill></Label>
             <DatePicker fx:id="arrivedateSelect" layoutX="155.0" layoutY="110.0" prefHeight="40.0" prefWidth="250.0" promptText="Arrival Date" />
          </children></AnchorPane>
          </items>

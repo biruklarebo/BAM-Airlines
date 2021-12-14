@@ -117,6 +117,10 @@ public class HomePage extends Application implements Initializable{
 	
 	@FXML Label userLabel;
 	
+	@FXML 
+	private Button viewFlight;
+	
+	
 	
 	public void start(Stage fourthStage) throws Exception {
 		try {
@@ -141,7 +145,7 @@ public class HomePage extends Application implements Initializable{
 		userName = username;
 	}
 	
-	
+
 	
 	 ObservableList<String> departCities = FXCollections.observableArrayList("Atlanta", "New York", "London", "Paris", "Chicago", "Athens", "Barcelona", "Miami", "Los Angeles", "Washington D.C",
 			"Orlando", "Austin", "Dallas", "Baltimore", "Nashville", "Rome", "Frankfurt", "Sydney", "Tokyo", "Baton Rouge", "New Orleans", "Cheyenne", "Fargo", "Pittsburg",
@@ -305,6 +309,8 @@ public class HomePage extends Application implements Initializable{
 		 refreshPage();
 		
 	}
+	
+	
 			
 	
 		
@@ -314,12 +320,14 @@ public class HomePage extends Application implements Initializable{
 		
 		Stage stage = new Stage();
 		  System.out.print("Logout Clicked!");
+		  reservation.clear();
 		  Parent root4 = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 		  Scene scene = new Scene(root4);
 		  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		  stage.setScene(scene);
 		  stage.setTitle("Welcome to BAM Airlines!");
 		  stage.show();
+		  
 		
 	}
 	

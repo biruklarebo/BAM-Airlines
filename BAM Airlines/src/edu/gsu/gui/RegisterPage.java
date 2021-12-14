@@ -103,18 +103,13 @@ private String[] stateOptions = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE",
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		//initialize 
 		//this populates the choice box
 		myChoiceBox.getItems().addAll(securityQuestions);
 		stateChoiceBox.getItems().addAll(stateOptions);
 		
 	}
-	public void initialize1(URL arg0, ResourceBundle arg1) {
-		stateChoiceBox.getItems().addAll(stateOptions);
-		
-		
-		
-	}
+	
 	
 	public void submitClicked(MouseEvent event) throws IOException {
 		  if (userName.getText().isEmpty()|| password.getText().isEmpty() || email.getText().isEmpty() || address.getText().isEmpty() 

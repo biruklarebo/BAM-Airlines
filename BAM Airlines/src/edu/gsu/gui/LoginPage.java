@@ -10,6 +10,7 @@ import java.io.IOException;
 import edu.gsu.common.Action;
 import edu.gsu.common.Customer;
 import edu.gsu.common.VO;
+import edu.gsu.db.Queries;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -30,8 +31,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
 
-
+//This class opens the login page which extends from Application
+//The application class is a java class 
 public class LoginPage extends Application {
+	
+/*these encapsulate the text fields and buttons that are associated with the Login Page
+ In order to create events and tasks, these need to be linked to scene builder with their IDs
+ */
 
   @FXML
   private TextField username;
@@ -46,6 +52,9 @@ public class LoginPage extends Application {
   @FXML 
   private AnchorPane LoginScreen;
   
+  
+  //This creates a mouse event, when a user clicks 
+  //throws IOException because the application is receiving an input from the user
   @FXML
   public void loginClicked(MouseEvent event) throws IOException {
 	  Customer co = new Customer();
@@ -54,7 +63,7 @@ public class LoginPage extends Application {
 		  
 	  }
 	  else {
-		  VO vo = new VO();
+		  VO vo = new VO(); //This creates a temp value object that stores the input text from the user
 		  vo.setCustomer(co);
 		  co.setUserName(username.getText());
 		  co.setPassword(password.getText());
@@ -63,9 +72,11 @@ public class LoginPage extends Application {
 			  System.out.print("register clicked!");
 			  String user = username.getText();
 			  FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+			  
 			  Parent root1 = loader.load();
 			  //Parent root1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
 			  HomePage homePage = loader.getController();
+			  
 			  homePage.displayName(user);
 			  Scene scene = new Scene(root1);
 			  stage = (Stage)((Node)event.getSource()).getScene().getWindow();

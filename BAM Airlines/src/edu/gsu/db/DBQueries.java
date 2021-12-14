@@ -1,6 +1,7 @@
 package edu.gsu.db;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,22 +18,23 @@ import edu.gsu.db.ConnectDatbase;
 public class DBQueries {
 	
 	public static void login(VO vo) throws Exception {
-		Customer co = vo.getCustomer();	
+		Customer co = vo.getCustomer();	//this gets the customer temporary object from the VO which only has username and password
 		
-		Connection con = ConnectDatbase.getConnection();
+		Connection con = ConnectDatbase.getConnection();//this establishes the connection. This is a method inside of the ConnectDatabase class
 		try {
 			// Create a statement
-			PreparedStatement statement = con.prepareStatement(Queries.LOGIN);
+			PreparedStatement statement = con.prepareStatement(Queries.LOGIN); //this goes to the queries class which stores all of the queries we need
 	    
-			String user = co.getUserName();
-			String pass = co.getPassword();
+			String user = co.getUserName();//this creates a new String variable assigning it the value from the VO 
+			String pass = co.getPassword();//this does the same as above 
 			
 			// Execute a statement
-			ResultSet resultSet = statement.executeQuery();
+			ResultSet resultSet = statement.executeQuery();//It is a set of data in our database that is a result of our query.
 			
-			int count = 0;
+			int count = 0;//we set this equal to 0 so we can search for matches with username and password
 
 			// Iterate through the result and print the student names
+			//resultSet.next tells the query to go to the next row. It will go through all rows as it is a While statement
 			while (resultSet.next()) {
 				String username = resultSet.getString("userName");
 				String password = resultSet.getString("password");
@@ -51,13 +53,13 @@ public class DBQueries {
 			throw e;
 		}
 		finally {
-			
+			//finally always run even if in a try and catch statement. Even with or without exceptions.
 			con.close();
 		}
 	}
 	  	
 		public static void createAccount(VO vo) throws Exception {
-		Customer co = vo.getCustomer();	
+		Customer co = vo.getCustomer();	//
 
 		Connection con = ConnectDatbase.getConnection();
 		PreparedStatement smt = con.prepareStatement(Queries.CREATE_ACCOUNT);
